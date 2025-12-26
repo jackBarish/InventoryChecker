@@ -1,4 +1,4 @@
-name: Run Inventory Checker
+name: Inventory Checker
 
 on:
   schedule:
@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # Add packages your script needs, for example:
+          # Add packages your script needs here, e.g.:
           # pip install requests beautifulsoup4
 
       - name: Run Inventory Checker

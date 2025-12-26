@@ -2,8 +2,10 @@ name: Inventory Checker
 
 on:
   schedule:
-    # Runs twice a day at 10:00 UTC and 16:00 UTC
-    - cron: '0 10,16 * * *'
+    # Runs three times a day: 10:00 AM, 4:00 PM, 5:00 PM EST
+    - cron: '15 10 * * *'   # 10:00 AM EST → 15:00 UTC
+    - cron: '0 16 * * *'    # 4:00 PM EST → 21:00 UTC
+    - cron: '0 17 * * *'    # 5:00 PM EST → 22:00 UTC
   workflow_dispatch: # allows manual trigger
 
 jobs:

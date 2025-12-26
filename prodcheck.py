@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -25,22 +22,23 @@ def check_stock():
         response = requests.get(BESTBUY_URL, headers=headers)
         response.raise_for_status()  # Raises an error if HTTP status != 200
         soup = BeautifulSoup(response.text, "html.parser")
-        text = soup.get_text().lower()
 
-        if "add to cart" in text:
-            send_discord_message("🟢 ITS HERE!!! — Item is in stock!\n" + BESTBUY_URL)
-        else:
-            send_discord_message("🔴 Sadly, the product is still out of stock.")
+        # Look for the Add to Cart button
+        button = soup.find("button", {"class": "add-to-cart-button"})
+
+        if button:
+            button_text = button.get_text(strip=True)
+            disabled = button.has_attr("disabled")
+
+            if not disabled and "Add to Cart" in button_text:
+                send_discord_message("🟢 ITS HERE!!! — Item is in stock!\n" + BESTBUY_URL)
+                return
+
+        # If button not found or disabled
+        send_discord_message("🔴 Sadly, the product is still out of stock.")
 
     except Exception as e:
         print("Error during stock check:", e)
 
 if __name__ == "__main__":
     check_stock()
-
-
-# In[ ]:
-
-
-
-

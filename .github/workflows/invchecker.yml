@@ -22,8 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # Add packages your script needs here, e.g.:
-          # pip install requests beautifulsoup4
+          python -m pip install requests beautifulsoup4
 
       - name: Run Inventory Checker
         run: python prodcheck.py

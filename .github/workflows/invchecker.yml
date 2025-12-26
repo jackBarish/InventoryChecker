@@ -1,4 +1,4 @@
-name: Inventory Checker
+name: Run Inventory Checker
 
 on:
   schedule:
@@ -26,4 +26,4 @@ jobs:
           # pip install requests beautifulsoup4
 
       - name: Run Inventory Checker
-        run: python main/stock-checker/prodcheck.py
+        run: python main/prodcheck.py

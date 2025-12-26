@@ -26,4 +26,4 @@ jobs:
           # pip install requests beautifulsoup4
 
       - name: Run Inventory Checker
-        run: python main/prodcheck.py
+        run: python prodcheck.py

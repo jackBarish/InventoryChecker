@@ -11,8 +11,9 @@ WEBHOOKS = [
         "url": "https://discord.com/api/webhooks/1454190741743079455/GPJI0Q1ycmaK3v1Yph_Rf33qbvLZazBHMi-93wenkq54uUVIPZzaUbLRFHgj3h-MFoyH"
     },
     {
-        "type": "teams",
-        "url": "https://interpublic.webhook.office.com/webhookb2/f9ab9cbb-59cb-40ee-b6ac-d0e94d86b829@d026e4c1-5892-497a-b9da-ee493c9f0364/IncomingWebhook/9a5638e811d346a3832f1dd6a24c86f0/83b7dad1-0d35-4489-815f-e0db897df861/V2EHsxWmZ_WbMgIVINAImfJgBgv5cMZfLtBsVXOgKxv8U1"
+        #commenting out for now.
+       # "type": "teams",
+        #"url": "https://interpublic.webhook.office.com/webhookb2/f9ab9cbb-59cb-40ee-b6ac-d0e94d86b829@d026e4c1-5892-497a-b9da-ee493c9f0364/IncomingWebhook/9a5638e811d346a3832f1dd6a24c86f0/83b7dad1-0d35-4489-815f-e0db897df861/V2EHsxWmZ_WbMgIVINAImfJgBgv5cMZfLtBsVXOgKxv8U1"
     }
 ]
 

@@ -1,14 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import requests
-from bs4 import BeautifulSoup
-
-WEBHOOK_URL = "https://discord.com/api/webhooks/1454190741743079455/GPJI0Q1ycmaK3v1Yph_Rf33qbvLZazBHMi-93wenkq54uUVIPZzaUbLRFHgj3h-MFoyH"
-BESTBUY_URL = "https://www.bestbuy.ca/en-ca/product/ibuypower-slate-9-series-gaming-pc-white-intel-core-i9-14900kf-32gb-ram-2tb-ssd-rtx-5070-12gb-win-11/19306669"
-
-#!/usr/bin/env python
-# coding: utf-8
 
 import requests
 from bs4 import BeautifulSoup

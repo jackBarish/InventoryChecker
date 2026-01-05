@@ -1,26 +1,37 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
 import requests
 from bs4 import BeautifulSoup
 
-#webhooks
-WEBHOOK_URLS = [
-    "https://discord.com/api/webhooks/1454190741743079455/GPJI0Q1ycmaK3v1Yph_Rf33qbvLZazBHMi-93wenkq54uUVIPZzaUbLRFHgj3h-MFoyH",
-    "https://interpublic.webhook.office.com/webhookb2/f9ab9cbb-59cb-40ee-b6ac-d0e94d86b829@d026e4c1-5892-497a-b9da-ee493c9f0364/IncomingWebhook/956f1dc1b1b34347a6c02f46d3aa79bf/83b7dad1-0d35-4489-815f-e0db897df861/V2TXvwLrDaXxemFnEuYYI0m5d85vMbW5SGhShlKbCVWlQ1"
+# 🔔 Webhooks with type
+WEBHOOKS = [
+    {
+        "type": "discord",
+        "url": "https://discord.com/api/webhooks/WEBHOOK_1"
+    },
+    {
+        "type": "teams",
+        "url": "https://outlook.office.com/webhook/WEBHOOK_2"
+    }
 ]
 
-#Product URL
+# 🛒 Product URL
 BESTBUY_URL = "https://www.bestbuy.ca/en-ca/product/ibuypower-slate-9-series-gaming-pc-white-intel-core-i9-14900kf-32gb-ram-2tb-ssd-rtx-5070-12gb-win-11/19306669"
 
-def send_discord_message(message):
-    for webhook_url in WEBHOOK_URLS:
+def send_message(message):
+    for webhook in WEBHOOKS:
         try:
-            response = requests.post(webhook_url, json={"content": message})
+            if webhook["type"] == "discord":
+                payload = {"content": message}
+            elif webhook["type"] == "teams":
+                payload = {"text": message}
+
+            response = requests.post(webhook["url"], json=payload)
             response.raise_for_status()
+
         except Exception as e:
-            print(f"Error sending Discord message to {webhook_url}: {e}")
+            print(f"Error sending to {webhook['type']} webhook:", e)
 
 def check_stock():
     try:
@@ -45,13 +56,13 @@ def check_stock():
             disabled = button.has_attr("disabled")
 
             if not disabled and "Add to Cart" in button_text:
-                send_discord_message(
+                send_message(
                     "🟢 ITS HERE!!! — Item is in stock!\n" + BESTBUY_URL
                 )
                 return
 
         # Button missing or disabled = out of stock
-        send_discord_message(
+        send_message(
             "🔴 Sadly, the product is still out of stock."
         )
 
